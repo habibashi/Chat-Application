@@ -1,0 +1,355 @@
+.my-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 15px;
+    text-align: left;
+}
+
+.my-button:hover {
+    background-color: #dddddd;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: #333c49;
+}
+
+.left-nav a {
+    color: #fff;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.right-nav a {
+    color: #fff;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.right-nav a:hover {
+    color: #111;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.dropdown-button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-button img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #f1f1f1;
+    min-width: 110px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.right-nav a:last-child {
+    margin-right: 1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* Register Form */
+/* -------------- */
+
+/* Center the card container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+/* Style the card */
+.card-auth {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+}
+
+/* Style the form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style the input fields */
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+input[type="email"] {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    background-color: #333c49;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*..........*/
+
+.sidebar {
+    background-color: #181f27;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding-top: 20px; */
+    height: 90vh;
+    min-width: 200px;
+}
+
+.btn {
+    background-color: #181f27;
+    color: white;
+    width: 200px;
+    border: none;
+    padding: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: large;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #442d7f;
+}
+
+/* ..... */
+
+.container-bg-color {
+    background-color: #eaeef2;
+    width: 82%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* input seach */
+
+.search-input {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("searchicon.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+    height: 35px;
+}
+
+.search-input:focus {
+    width: 140px;
+}
+
+/* card */
+.card {
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    max-width: 34vh;
+    padding: 0;
+    margin: 0;
+}
+
+.rounded-img {
+    border-radius: 50%;
+}
+
+.card-header,
+.card-footer {
+    text-align: center;
+}
+
+.card-content {
+    margin-top: 2px;
+    padding: 10px;
+}
+
+.row {
+    margin-bottom: 5px;
+}
+
+.card-action a {
+    background-color: #eaeef2;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 50%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* chat page */
+
+/* Overall page styling */
+.chat-page {
+    font-family: Arial, sans-serif;
+    color: #333;
+    width: 82%;
+    background-color: white;
+    margin: 0 auto;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/* Top section styling */
+.top-section {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+}
+
+.chat-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-info {
+    margin-left: 10px;
+}
+
+.user-name {
+    font-size: 20px;
+    margin: 0;
+}
+
+.underline {
+    border: none;
+    border-bottom: 2px solid #333;
+    margin: 0;
+}
+
+/* Middle section styling */
+.middle-section {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 67vh;
+}
+
+.middle-section::-webkit-scrollbar {
+    display: none;
+}
+
+.left-chat {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.chat-message-left {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 0;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.chat-message-right {
+    background-color: lightblue;
+    border: 1px solid lightblue;
+    padding: 10px;
+    margin: 0;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.right-chat {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    justify-content: end;
+}
+
+/* Bottom section styling */
+.bottom-section {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.send-button {
+    cursor: pointer;
+    border: none;
+    height: 40px;
+}
