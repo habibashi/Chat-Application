@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -43,9 +44,7 @@ Route::get('/people', function () {
 });
 
 // Group Chat
-Route::get('/groups', function () {
-    return view('chat.group');
-});
+Route::get('/groups', [ChatController::class, 'groups']);
 
 // Chat page
 Route::get('/chat', function () {

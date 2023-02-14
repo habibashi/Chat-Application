@@ -2,19 +2,25 @@
 
 @section('content')
 
-<div class="container-bg-color">
+<div class="container-bg-color" style="border: 1px solid black;">
     <div style="display: flex; gap: 10px; align-items: center;">
         <h2>Groups</h2>
-        <input class="search-input" type="text" name="search" id="search" placeholder="Quick Find">
+        <form action="/groups">
+          <input class="search-input" type="text" name="search" id="search" placeholder="Quick Find">
+          <button type="submit">search</button>
+        </form>
     </div>
-    <div style="background-color: white; padding: 15px">
+    <div class="card-scroll" style="border: 1px solid black;">
+        @unless(count($users) == 0) 
+        
+        @foreach ($users as $user)
         <div class="card">
             <div class="card-header" style="background-color: #EAEEF2; padding: 10px; border-block-end: #EAEEF2">
-              <img style="width: 24vh; height: 24vh " src="https://images.pexels.com/photos/10352348/pexels-photo-10352348.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="your-image" class="rounded-img">
+              <img style="width: 24vh; height: 24vh" src="https://images.pexels.com/photos/10352348/pexels-photo-10352348.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="your-image" class="rounded-img">
             </div>
             <div class="card-content">
-              <div class="row">Habib ashi</div>
-              <div class="row">habibashi187@gmail.com</div>
+              <div class="row">{{$user->name}}</div>
+              <div class="row">{{$user->email}}</div>
               <div class="card-action">
                 <a href="/chat" style="display: flex; align-items: center; gap: 4px; ">
                     <svg style="width: 15px; height: 15px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -25,7 +31,13 @@
               </div>
             </div>
         </div>
-    </div>
+        @endforeach
+
+        @else
+        <p>No users found</p>
+
+        @endunless
+      </div>
 </div>
 
 @endsection

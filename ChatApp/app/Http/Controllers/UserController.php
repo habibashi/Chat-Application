@@ -12,7 +12,7 @@ class UserController extends Controller
     public function create() {
         return view('users.register');
     }
-
+ 
     // create New User 
     public function store(Request $request) {
         $formFields = $request->validate([
