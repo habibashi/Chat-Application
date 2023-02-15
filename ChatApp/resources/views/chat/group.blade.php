@@ -2,21 +2,21 @@
 
 @section('content')
 
-<div class="container-bg-color" style="border: 1px solid black;">
+<div class="container-bg-color">
     <div style="display: flex; gap: 10px; align-items: center;">
         <h2>Groups</h2>
         <form action="/groups">
           <input class="search-input" type="text" name="search" id="search" placeholder="Quick Find">
-          <button type="submit">search</button>
+          <button type="submit" hidden>search</button>
         </form>
     </div>
-    <div class="card-scroll" style="border: 1px solid black;">
+    <div class="card-scroll">
         @unless(count($users) == 0) 
         
         @foreach ($users as $user)
         <div class="card">
             <div class="card-header" style="background-color: #EAEEF2; padding: 10px; border-block-end: #EAEEF2">
-              <img style="width: 24vh; height: 24vh" src="https://images.pexels.com/photos/10352348/pexels-photo-10352348.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="your-image" class="rounded-img">
+              <img style="width: 150px; height: 150px" src="{{(!empty($user->photo))? url('upload/images/' .$user->photo): url('image/blank-profile.png')}}" alt="your-image" class="rounded-img">
             </div>
             <div class="card-content">
               <div class="row">{{$user->name}}</div>
@@ -37,7 +37,7 @@
         <p>No users found</p>
 
         @endunless
-      </div>
+    </div>
 </div>
 
 @endsection

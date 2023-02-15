@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/app.css">
     <title>chatApp</title>
 </head>
 <body>
   <header>
     <nav class="nav">
       <div class="left-nav">
-        <a><img width="200" style="color: white" height="40" src="image/office-chat-logos-idu-y2wZ2t.png" alt=""></a>
+        <a class="hide-image"><img width="200" style="color: white" height="40" src="image/office-chat-logos-idu-y2wZ2t.png" alt=""></a>
+        <a class="show-nav-link" href="/groups">Groups</a>
+        <a class="show-nav-link" href="/people">People</a>
+        <a class="show-nav-link" href="#">Downloads</a>
       </div>
       @auth
-      <div class="left-nav">
-      </div>
+      @php
+        // $id = Auth::user()->id;
+        $user = Auth::user();
+      @endphp
       <div class="right-nav">
         <div class="dropdown">
           <button class="dropdown-button">
-            <img src="https://images.pexels.com/photos/10352348/pexels-photo-10352348.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="Your name">
-            <span>Habib Ashi</span>
+            <img src="{{(!empty($user->photo))? url('upload/images/' .$user->photo): url('image/blank-profile.png')}}" alt="Your name">
+            <span>{{$user->name}}</span>
           </button>
           <div class="dropdown-content">
             <a href="/profile">Profile</a>
@@ -42,7 +47,7 @@
   </header>
 
   @auth
-  <main style="display: flex">
+  <main style="display: flex; width: 100vw">
   @endauth
     @auth
       <div class="sidebar">
@@ -64,20 +69,27 @@
           </svg>
           Downloads
         </a>
+        
+        @if ($user->role === 'admin')
+            
+        <a href="/CreateAccount" class="btn" style="display: flex; align-items: center; gap: 10px">
+          <svg style="width: 25px; height: 25px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+          Create Account
+        </a>
+
+        <a href="/CreateCompany" class="btn" style="display: flex; align-items: center; gap: 10px">
+          <svg style="width: 25px; height: 25px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+          Create Company
+        </a>
+        @endif
+        
       </div>
     @endauth
-    @yield('content')
+      @yield('content')
   </main>
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-  {{-- <script src="/socket.io/socket.io.js"></script> --}}
-  <script src="/socket.io/socket.io.js"></script>
-  {{-- <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script> --}}
-  <script>
-    // $(function() {
-      let socket = io.connect('http://localhost:3000');
-      console.log(socket);
-      socket.on('connection');
-    // });
-  </script>
 </body>
 </html>

@@ -1,15 +1,5 @@
-import { defineConfig } from "vite";
-import laravel from "laravel-vite-plugin";
-export default defineConfig({
-    plugins: [
-        laravel({
-            input: ["resources/css/app.css", "resources/js/app.js"],
-            refresh: true,
-        }),
-    ],
-});
-
 let mix = require("laravel-mix");
+// import { mix } from "laravel-mix";
 
 mix.js("resources/js/app.js", "public/js")
     // .css("resources/css/helper.css", "public/css/helper.css")
@@ -21,6 +11,6 @@ mix.js("resources/js/app.js", "public/js")
 mix.options({
     hmrOptions: {
         host: "localhost",
-        port: 5173,
+        port: 8080,
     },
 });

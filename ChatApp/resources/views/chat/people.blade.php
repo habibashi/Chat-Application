@@ -7,10 +7,10 @@
         <h2>People</h2>
         <input class="search-input" type="text" name="search" id="search" placeholder="Quick Find">
     </div>
-    <div style="background-color: white; padding: 15px">
+    <div class="card-scroll">
         <div class="card">
             <div class="card-header" style="background-color: #EAEEF2; padding: 10px; border-block-end: #EAEEF2">
-              <img style="width: 24vh; height: 24vh " src="https://images.pexels.com/photos/10352348/pexels-photo-10352348.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="your-image" class="rounded-img">
+              <img style="width: 150px; height: 150px" src="https://images.pexels.com/photos/10352348/pexels-photo-10352348.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="your-image" class="rounded-img">
             </div>
             <div class="card-content">
               <div class="row">Habib ashi</div>
