@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -27,12 +29,6 @@ class CompanyController extends Controller
     public function createCompany(Request $request)
     {
         
-        if ($request->file('logo')) {
-            $file = $request->file('logo');
-            $filename = date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/companyLogo'), $filename);
-            $formFields['logo'] = $filename;
-        }
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'description' => ['required'],
@@ -40,7 +36,14 @@ class CompanyController extends Controller
             'active' => ['required'],
             'email' => ['required']
         ]);
-
+        
+        if ($request->file('logo')) {
+            $file = $request->file('logo');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/companyLogo'), $filename);
+            $formFields['logo'] = $filename;
+        }
+        
         // Create user
         Company::create([
             'name' => $formFields['name'],
@@ -71,9 +74,24 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function updateCompany(Request $request)
     {
-        //
+        $id = Auth::user()->company_id;
+        $editData = Company::find($id);
+        $editData->name = $request->name;
+        $editData->email = $request->email;
+        $editData->description = $request->description;
+        $editData->active = $request['active'];
+
+        if ($request->file('logo')) {
+            $file = $request->file('logo');
+
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/companyLogo'), $filename);
+            $editData['logo'] = $filename;
+        }
+        $editData->save();
+        return redirect('/companyProfile');
     }
 
     /**

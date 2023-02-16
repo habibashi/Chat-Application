@@ -37,6 +37,39 @@
         @enderror
         <div class="row">
             <div class="col-25">
+                <label for="currPass">Current Password</label>
+            </div>
+            <div class="col-75">
+                <input type="password" id="currPass" name="currPass" placeholder="Current Password">
+            </div>
+        </div>
+        @error('currPass')
+            <p style="color:red ">{{$message}}</p>
+        @enderror
+        <div class="row">
+            <div class="col-25">
+                <label for="newPass">New Password</label>
+            </div>
+            <div class="col-75">
+                <input type="password" id="newPass" name="newPass" placeholder="New Password">
+            </div>
+        </div>
+        @error('newPass')
+            <p style="color:red ">{{$message}}</p>
+        @enderror
+        <div class="row">
+            <div class="col-25">
+                <label for="confNewPass">Confirm New Password</label>
+            </div>
+            <div class="col-75">
+                <input type="password" id="confNewPass" name="confNewPass" placeholder="Confirm Password">
+            </div>
+        </div>
+        @error('confNewPass')
+            <p style="color:red ">{{$message}}</p>
+        @enderror
+        <div class="row">
+            <div class="col-25">
                 <label for="job">Job Title</label>
             </div>
             <div class="col-75">

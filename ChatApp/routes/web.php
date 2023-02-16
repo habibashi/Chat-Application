@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('/profile', function () {
-    return view('users.profile');
+    return view('manager.profile');
 });
 
 // show Register/Create Form
@@ -47,8 +47,11 @@ Route::get('/people', function () {
     return view('chat.people');
 });
 
-// Group Chat
+// Group chat
 Route::get('/groups', [ChatController::class, 'groups']);
+
+// people search Chat
+Route::get('/people', [ChatController::class, 'people']);
 
 // Chat page
 Route::get('/chat', function () {
@@ -72,7 +75,18 @@ Route::get('/CreateCompany', function() {
     return view('admin.createCompany');
 });
 
+// Company Profile
+Route::get('/companyProfile', function() {
+    return view('manager.companyProfile');
+});
+
+// Update Company
+Route::put('/updateCompany', [CompanyController::class, 'updateCompany']);
+
+// Create Company
 Route::post('/createCompany', [CompanyController::class, 'createCompany']);
+
+
 
 if (App::environment('local')) {
     // Route::get('/playground', function() {

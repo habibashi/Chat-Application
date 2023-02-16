@@ -20,7 +20,7 @@ form.addEventListener("submit", (event) => {
     });
 });
 
-const channel = Echo.channel("public.playground.1");
+const channel = Echo.private("public.playground.1");
 // console.log("s");
 channel
     .subscribed(() => console.log("subscribedd!"))

@@ -32,7 +32,7 @@ class publicEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('public.playground.1');
+        return new PrivateChannel('private.playground.1');
     }
 
     public function broadcastAs()
