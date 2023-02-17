@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
-    <title>chatApp</title>
+    <title>ChatApp</title>
 </head>
 <body>
   <header>
     <nav class="nav">
       <div class="left-nav">
         <a class="hide-image"><img width="200" style="color: white" height="40" src="image/office-chat-logos-idu-y2wZ2t.png" alt=""></a>
+        @auth
         <a class="show-nav-link" href="/groups">Groups</a>
-        <a class="show-nav-link" href="/people">People</a>
+        <a class="show-nav-link" href="/">People</a>
         <a class="show-nav-link" href="#">Downloads</a>
+        @endauth
       </div>
       @auth
       @php
-        // $id = Auth::user()->id;
         $user = Auth::user();
       @endphp
       <div class="right-nav">
@@ -28,8 +29,6 @@
             <span>{{$user->name}}</span>
           </button>
           <div class="dropdown-content">
-            {{-- <a href="/profile">Profile</a> --}}
-            {{-- <a href="#">Settings</a> --}}
             <form method="POST" action="/logout">
               @csrf
               <button class="my-button" style="color: black" type="submit">Logout</button>
@@ -47,7 +46,7 @@
   </header>
 
   @auth
-  <main style="display: flex; width: 100vw">
+  <main style="display: flex; width: 100vw; overflow: ">
   @endauth
     @auth
       <div class="sidebar">
@@ -57,7 +56,7 @@
           </svg>
           Groups
         </a>
-        <a href="/people" class="btn" style="display: flex; align-items: center; gap: 10px">
+        <a href="/" class="btn" style="display: flex; align-items: center; gap: 10px">
             <svg style="width: 25px; height: 25px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
           </svg>
@@ -68,16 +67,23 @@
             
         <a href="/CreateAccount" class="btn" style="display: flex; align-items: center; gap: 10px">
           <svg style="width: 25px; height: 25px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
           Create Account
         </a>
 
         <a href="/CreateCompany" class="btn" style="display: flex; align-items: center; gap: 10px">
           <svg style="width: 25px; height: 25px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
           Create Company
+        </a>
+
+        <a href="/editActiveCompany" class="btn" style="display: flex; align-items: center; gap: 10px">
+          <svg style="width: 25px; height: 25px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+          Active Company
         </a>
         @endif
 

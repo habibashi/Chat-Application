@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-bg-color">
-    <div style="display: flex; gap: 10px; align-items: center;">
+    <div style="display: flex; gap: 10px; align-items: center; padding-top: 12px; padding-bottom: 12px">
         <h2>Groups</h2>
     </div>
     <div class="card-scroll">

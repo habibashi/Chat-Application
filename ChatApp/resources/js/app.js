@@ -1,13 +1,6 @@
 import axios from "axios";
 import "./bootstrap";
 
-// const form = $("#chat-form");
-// const inputMessage = $("#chat-input");
-// $("#chat-form").submit(function (event) {
-//     event.preventDefault();
-//     const userInput = inputMessage.value;
-//     console.log(userInput);
-// });
 const form = document.getElementById("chat-form");
 const inputMessage = document.getElementById("chat-input");
 const listMesssage = document.querySelector(".middle-section");
@@ -18,16 +11,30 @@ form.addEventListener("submit", (event) => {
     axios.post("/chat-message", {
         message: userInput,
     });
+    inputMessage.value = "";
 });
 
-const channel = Echo.private("public.playground.1");
-// console.log("s");
+const channel = Echo.channel("public.playground.1");
 channel
     .subscribed(() => console.log("subscribedd!"))
     .listen(".playground", (event) => {
         console.log(event);
         const message = event.message;
+
         const li = document.createElement("li");
-        li.textContent = message;
+        li.classList.add("left-chat");
+
+        // create the span element and add the name
+        const span = document.createElement("span");
+        span.textContent = event.user.name;
+        span.classList.add("name-span");
+        li.appendChild(span);
+
+        // create the p element and add the chat message
+        const p = document.createElement("p");
+        p.classList.add("chat-message-left");
+        p.textContent = message;
+        li.appendChild(p);
+
         listMesssage.append(li);
     });

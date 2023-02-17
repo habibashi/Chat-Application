@@ -13,14 +13,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
-
-// const form = $("#chat-form");
-// const inputMessage = $("#chat-input");
-// $("#chat-form").submit(function (event) {
-//     event.preventDefault();
-//     const userInput = inputMessage.value;
-//     console.log(userInput);
-// });
 var form = document.getElementById("chat-form");
 var inputMessage = document.getElementById("chat-input");
 var listMesssage = document.querySelector(".middle-section");
@@ -31,16 +23,28 @@ form.addEventListener("submit", function (event) {
   axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("/chat-message", {
     message: userInput
   });
+  inputMessage.value = "";
 });
 var channel = Echo.channel("public.playground.1");
-// console.log("s");
 channel.subscribed(function () {
   return console.log("subscribedd!");
 }).listen(".playground", function (event) {
   console.log(event);
   var message = event.message;
   var li = document.createElement("li");
-  li.textContent = message;
+  li.classList.add("left-chat");
+
+  // create the span element and add the name
+  var span = document.createElement("span");
+  span.textContent = event.user.name;
+  span.classList.add("name-span");
+  li.appendChild(span);
+
+  // create the p element and add the chat message
+  var p = document.createElement("p");
+  p.classList.add("chat-message-left");
+  p.textContent = message;
+  li.appendChild(p);
   listMesssage.append(li);
 });
 

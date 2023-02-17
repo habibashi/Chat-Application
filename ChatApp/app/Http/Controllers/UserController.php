@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -73,7 +72,7 @@ class UserController extends Controller
             'company_id' => $formFields['company_id'],
         ]);
 
-        return redirect('/');
+        return redirect('/profile');
     }
 
     // Logout Use
@@ -93,21 +92,15 @@ class UserController extends Controller
 
     // Authenticate user
     public function authenticate(Request $request) {
-        // dd($request);
+        // dd($request());
         $formFields = $request->validate([
             'email' => ['required', 'email'],
             'password' => 'required'
         ]);
 
-        // $active = User::find($formFields['email'])->join('companies', 'users.id', '=', 'companies.company_id')
-        //             ->select('users.role', 'companies.active');
-        $active = DB::table('users')
-                ->join('companies', 'users.company_id', '=', 'companies.id')
-                ->select('users.role', 'companies.active')
-                ->where('users.email', '=', $formFields['email'])
-                ->first();
+        $user = User::where('email', $formFields['email'])->with('company')->first();
 
-        if ($active->role == 'employee' && $active->active == '0'){
+        if ($user->role == 'employee' AND $user->company->active == '0'){
             return back()->withErrors(['email' => 'Your Company is Deactivated'])->onlyInput('email');
         }
 
@@ -148,7 +141,7 @@ class UserController extends Controller
             $editData['photo'] = $filename;
         }
         $editData->save();
-        return redirect('/profile');
+        return redirect('/');
     }
 
 }

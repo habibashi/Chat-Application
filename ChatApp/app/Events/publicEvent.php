@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -20,9 +21,11 @@ class publicEvent implements ShouldBroadcast
      * @return void
      */
     private string $message;
-    public function __construct(string $message)
+    private User $user; 
+    public function __construct(string $message, User $user)
     {
         $this->message = $message;
+        $this->user = $user;
     }
 
     /**
@@ -32,7 +35,7 @@ class publicEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('private.playground.1');
+        return new Channel('public.playground.1');
     }
 
     public function broadcastAs()
@@ -43,7 +46,8 @@ class publicEvent implements ShouldBroadcast
     public function broadcastWith()
     {
         return [
-            'message' => $this->message
+            'message' => $this->message,
+            'user' => $this->user->only(['id', 'name'])
         ];
     }
 }

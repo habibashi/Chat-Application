@@ -47,7 +47,7 @@
             @error('description')
                 <p style="color:red ">{{$message}}</p>
             @enderror 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-25">
                     <label for="active">Activation</label>
                 </div>
@@ -64,7 +64,7 @@
             </div>
             @error('active')
                 <p style="color:red ">{{$message}}</p>
-            @enderror 
+            @enderror  --}}
             <div class="row">
                 <div class="col-25">
                     <label for="logo">Logo</label>

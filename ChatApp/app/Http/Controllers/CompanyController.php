@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,7 +27,6 @@ class CompanyController extends Controller
      */
     public function createCompany(Request $request)
     {
-        
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'description' => ['required'],
@@ -52,7 +50,7 @@ class CompanyController extends Controller
             'active' => $formFields['active'],
             'email' => $formFields['email']
         ]);
-
+        
         return redirect('/');
     }
 
@@ -62,9 +60,21 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function activeCompany(Request $request)
     {
-        //
+        // dd($request);
+        $editActive = $request->validate([
+            'company_id' => ['required'],
+            'active' => ['required']
+        ]);
+
+        $query = Company::where('id', $editActive['company_id'])->first() ;
+
+        $query->active = $editActive['active'];
+        $query->save();
+
+        return redirect('/');
+
     }
 
     /**
@@ -81,7 +91,7 @@ class CompanyController extends Controller
         $editData->name = $request->name;
         $editData->email = $request->email;
         $editData->description = $request->description;
-        $editData->active = $request['active'];
+        // $editData->active = $request['active'];
 
         if ($request->file('logo')) {
             $file = $request->file('logo');
