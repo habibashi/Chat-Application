@@ -9,19 +9,12 @@
 .my-button:hover {
     background-color: #dddddd;
 }
-
+/* 
 .show-nav-link {
     color: #fff;
     margin-right: 10px;
     text-decoration: none;
-}
-
-.show-nav-link:hover {
-    border: 1px solid #442d7f;
-    padding: 7px;
-    border-radius: 5px;
-    background-color: #442d7f;
-}
+} */
 
 .nav {
     display: flex;
@@ -34,9 +27,14 @@
     background-color: #333c49;
 }
 
+.left-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .left-nav a {
     color: #fff;
-    margin-right: 10px;
     text-decoration: none;
 }
 
@@ -174,8 +172,6 @@ input[type="submit"] {
     align-items: center;
     height: 90vh;
     position: fixed;
-    /* max-width: 230px; */
-    /* min-width: 230px; */
     width: 230px;
 }
 
@@ -238,14 +234,16 @@ input[type="submit"] {
     }
 }
 
-@media screen and (min-width: 800px) {
-    .show-nav-link {
-        visibility: hidden;
-    }
+#show-drop {
+    display: none;
 }
-@media screen and (max-width: 400px) {
-    .show-nav-link {
-        font-size: small;
+
+@media screen and (min-width: 800px) {
+    #shi {
+        display: none;
+    }
+    #show-drop {
+        display: block;
     }
 }
 
@@ -275,10 +273,6 @@ input[type="submit"] {
     gap: 25px;
 }
 
-/* .card-scroll::-webkit-scrollbar {
-    display: none;
-} */
-
 .card-content {
     margin-top: 2px;
     padding: 10px;
@@ -299,18 +293,6 @@ input[type="submit"] {
     cursor: pointer;
     text-decoration: none;
 }
-
-/* chat page */
-
-/* Overall page styling */
-/* .chat-page {
-    color: #333;
-    width: 82%;
-    background-color: white;
-    margin: 0 auto;
-    padding-right: 10px;
-    padding-left: 10px;
-} */
 
 /* Top section styling */
 .top-section {

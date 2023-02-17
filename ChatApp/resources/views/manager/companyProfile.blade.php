@@ -9,7 +9,7 @@
 
     <div class="container-bg-color">
         <div style="background-color: white; padding: 14px; margin-top: 10px">
-            <h3>Create Company</h3>
+            <h3>Edit Company Profile</h3>
             <br>
             <form method="POST" action="/updateCompany" enctype="multipart/form-data">
             @csrf

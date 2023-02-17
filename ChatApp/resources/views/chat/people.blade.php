@@ -39,7 +39,10 @@
           <img style="width: 150px; height: 150px" src="{{(!empty($user->photo))? url('upload/images/' .$user->photo): url('image/blank-profile.png')}}" alt="your-image" class="rounded-img">
         </div>
         <div class="card-content">
-          <div class="row">{{$user->name}}</div>
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <div class="row"> {{$user->name}}</div>
+            <div class="row">Company ID: {{$user->company_id}}</div>
+          </div>
           <div class="row">{{$user->email}}</div>
           <div class="card-action">
             <a href="/chat" style="display: flex; align-items: center; gap: 4px; ">

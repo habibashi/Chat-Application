@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,8 +26,28 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     
+
+    public function viewActiveCompany() {
+        return view('admin.active');
+    }
+
+    public function viewCreateCompany() {
+        return view('admin.createCompany');
+    }
+
+    public function viewCompanyProfile() {
+        return view('manager.companyProfile');
+    }
+    
     public function createCompany(Request $request)
     {
+        $id = Auth::user()->id;
+        $editData = User::find($id);
+        if ($editData->role !== 'admin') {
+            return redirect('/');
+        }
+
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'description' => ['required'],

@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="container-bg-color">
-        <div style="background-color: white; padding: 14px; margin-top: 10px">
+        <div style="background-color: white; margin-top: 10px; padding: 14px">
             <h3>Create Company</h3>
             <br>
-            <form method="POST" action="/createCompany">
+            <form method="POST" action="/createCompany" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-25">

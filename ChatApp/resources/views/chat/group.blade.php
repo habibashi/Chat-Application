@@ -18,7 +18,7 @@
             </div>
             <div class="card-content">
               <div class="row">{{$company->name}}</div>
-              <div class="row">{{$company->id}}</div>
+              <div class="row">{{$company->email}}</div>
               <div class="card-action">
                 <a href="/chat" style="display: flex; align-items: center; gap: 4px; ">
                     <svg style="width: 15px; height: 15px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -37,7 +37,7 @@
           </div>
           <div class="card-content">
             <div class="row">{{$company->name}}</div>
-            <div class="row">{{$company->id}}</div>
+            <div class="row">{{$company->email}}</div>
             <div class="card-action">
               <a href="/chat" style="display: flex; align-items: center; gap: 4px; ">
                   <svg style="width: 15px; height: 15px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

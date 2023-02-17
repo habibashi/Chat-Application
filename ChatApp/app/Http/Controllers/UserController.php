@@ -15,36 +15,18 @@ class UserController extends Controller
     public function create() {
         return view('users.register');
     }
- 
-    // create New User 
-    public function store(Request $request) {
-        $formFields = $request->validate([
-            'name' => ['required', 'min:3'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'string', 'confirmed', 'min:8'],
-            'gender' => ['required'],
-            'job_title' => ['required'],
-            'started_working_on' => ['required'],
-            'role' => ['required']
-        ]);
 
-        // Create user
-        $user = User::create([
-            'name' => $formFields['name'],
-            'email' => $formFields['email'],
-            'password' => bcrypt($formFields['password']),
-            'gender' => $formFields['gender'],
-            'job_title' => $formFields['job_title'],
-            'started_working_on' => $formFields['started_working_on'],
-            'role' => $formFields['role']
-        ]);
-    
-        // Login
-        auth()->login($user);    
-
-        return redirect('/');
+    public function viewProfile() {
+        return view('manager.profile');
     }
 
+    public function viewCompanyProfile() {
+        return view('manager.profile');
+    }
+    
+    public function viewCreateAccount() {
+        return view('admin.createAccount');
+    }
 
     // Create Accounts
     public function createAccount(Request $request) {
@@ -74,6 +56,7 @@ class UserController extends Controller
 
         return redirect('/profile');
     }
+
 
     // Logout Use
     public function logout(Request $request) {
